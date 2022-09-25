@@ -37,9 +37,13 @@ class HomePage extends StatelessWidget {
               final user = FirebaseAuth.instance.currentUser;
               final emailVerified = user?.emailVerified ?? false;
               if (emailVerified) {
-                print("Ypu are a verified user");
+                return const Text("Done");
               } else {
-                print("You are not yet verified");
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const VerifyEmailView(),
+                  ),
+                );
               }
               return const Text("Done");
             default:
@@ -53,3 +57,18 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+class VerifyEmailView extends StatefulWidget {
+  const VerifyEmailView({Key? key}) : super(key: key);
+
+  @override
+  State<VerifyEmailView> createState() => _VerifyEmailViewState();
+}
+
+class _VerifyEmailViewState extends State<VerifyEmailView> {
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold();
+  }
+}
+// 11:18:35 
